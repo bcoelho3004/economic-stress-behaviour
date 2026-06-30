@@ -63,13 +63,70 @@ The repository is organized as follows:
 - `README.md` — Project documentation
 - `requirements.txt` — Python dependencies
 
+## Key Findings
+
+### Economic Stress Index (2010–2023)
+
+A composite economic stress index was constructed from unemployment, inflation, and GDP growth. The 2020 COVID-19 shock produced the highest stress levels across all countries, with Spain (2.86) and Greece (2.31) most affected. The 2011–2013 Eurozone crisis hit Greece (peak stress: 3.91 in 2011), Portugal (2.56 in 2012), and Spain (2.48 in 2012) hardest.
+
+### Correlation Analysis
+
+| Relationship | Correlation |
+|---|---|
+| Economic Stress Index ↔ "Economic crisis" searches | +0.700 |
+| Unemployment ↔ "Economic crisis" searches | +0.650 |
+| Economic Stress Index ↔ Protest events | +0.248 |
+| Unemployment ↔ Protest events | +0.273 |
+| Economic Stress Index ↔ Anxiety | +0.141 |
+
+### Within-Country: Stress vs Protests
+
+| Country | Correlation |
+|---|---|
+| Greece | +0.728 |
+| Spain | +0.585 |
+| Portugal | +0.428 |
+| Germany | +0.076 |
+| France | −0.228 |
+| Italy | −0.221 |
+| Netherlands | −0.159 |
+
+Southern European countries show the strongest positive associations between economic stress and protest activity. France and Italy show weak or negative correlations, suggesting institutional factors mediate the translation of economic grievances into street mobilization.
+
+### Granger Causality Test (Portugal)
+
+Unemployment does not Granger-cause anxiety at conventional significance levels (p > 0.05), suggesting that economic stress and mental health indicators follow independent long-term trends rather than short-term causal relationships.
+
+### Key Insight
+
+Economic stress strongly predicts information-seeking behaviour ("economic crisis" Google searches) and correlates moderately with protest activity in Southern Europe. However, the relationship is heterogeneous across countries, reinforcing the importance of country-level institutional analysis.
+
 ## Current Status
 
-- [ ] Data collection
-- [ ] Exploratory data analysis
-- [ ] Time series modeling
-- [ ] Granger causality testing
+- [x] Data collection — Eurostat, World Bank, Google Trends
+- [x] Economic stress index construction
+- [x] Correlation analysis — pooled and within-country
+- [x] Granger causality testing
+- [x] Visualizations
+- [ ] ACLED API integration (currently using curated sample)
 - [ ] Dashboard deployment
+
+## Limitations
+
+- ACLED protest data used in this version are curated approximations based on public summaries. Full ACLED access requires registration.
+- Google Trends data are relative indices (0–100), not absolute search volumes.
+- Correlation does not imply causation. Observed relationships may reflect confounding variables.
+- National-level data masks regional and city-level variation.
+- Granger causality tests with 14 annual observations have limited statistical power.
+
+## Future Work
+
+- Register with ACLED and replace curated sample with exact event data
+- Expand to monthly frequency for more robust time series analysis
+- Incorporate social media sentiment (Twitter/X API)
+- Apply machine learning for protest prediction
+- Deploy interactive Streamlit dashboard
+- Build an "Early Warning Index" for social instability
 
 ## Limitations
 
